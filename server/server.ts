@@ -1,21 +1,11 @@
 import 'reflect-metadata'
+import ApplicationService from '@/services/ApplicationService';
 import { Container } from 'inversify';
-import Application from '@/Application';
 import { Kernel } from '@/Kernel';
-import { IApplication } from '@/IApplication';
 
-const container = new Container({
-  defaultScope: 'Singleton',
-});
+const container = new Container();
 
-container.bind<IApplication>('IApplication').to(Kernel);
+container.bind<ApplicationService>(ApplicationService).toSelf().inSingletonScope()
+const kernel = container.resolve<Kernel>(Kernel)
 
-async function bootstrap() {
-  const app = new Kernel();
-  await app.run(new Application());
-
-  return app
-}
-
-bootstrap()
-
+kernel.run()
