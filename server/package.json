@@ -7,7 +7,7 @@
     "test": "jest",
     "app:watch": "webpack --mode development --watch",
     "app:build": "webpack --mode production",
-    "app:dev": "nodemon dist/index.js"
+    "app:dev": "nodemon -q dist/index.js"
   },
   "keywords": [],
   "author": "",
