@@ -1,0 +1,13 @@
+# trashes files and directories
+.DS_Store
+.history
+.bash_history
+
+# node packages
+node_modules
+.vscode/
+
+# project's files
+server/storage/**/*.{png|jpg|jpeg|gif|bmp|tiff|ico|svg}
+server/storage/**/*.{log|chache}
+*.env
