@@ -20,8 +20,9 @@ export default abstract class ApplicationService {
    * bootstrap the application
    * @returns {Promise<void>}
    */
-  public async run(): Promise<void> {
-    await this.databaseContext.connect();
+  public async run(): Promise<void> {   
+    const { connection } = await this.databaseContext.connect()
+    const collection = connection.collection("users");
     
 
     return new Promise<void>((resolve, reject) => "App works")
