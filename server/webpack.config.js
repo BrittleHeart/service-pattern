@@ -16,9 +16,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
-    modules: [resolve(__dirname, 'server'), 'node_modules'],
+    modules: [resolve(__dirname, 'app'), 'node_modules'],
     alias: {
-      '@': resolve(__dirname, 'server/app'),
+      '@': resolve(__dirname, 'app/'),
     }
   },
   output: {
