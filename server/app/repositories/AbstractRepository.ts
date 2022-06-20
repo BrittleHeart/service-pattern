@@ -6,26 +6,21 @@ export default abstract class AbstractRepository implements IRepository<any> {
    * Get all entities
    * @returns {Promise<T[]>}
    */
-  async getAll<T>(): Promise<T[]> {
-    throw new Error("Method not implemented.");
-  }
+  abstract getAll<T>(): Promise<T[]>;
 
   /**
    * Get entity by id
    * @param {string} id 
+   * @returns {Promise<T>}
    */
-  async getById<T>(id: string): Promise<T> {
-    throw new Error("Method not implemented.");
-  }
+  abstract getById<T>(id: string): Promise<T>
   
   /**
    * Save entity
    * @param {T extends IDTO<any>} entity 
    * @returns {Promise<T>}
    */
-  async save<T extends IDTO<any>>(entity: T): Promise<T> {
-    throw new Error("Method not implemented.");
-  }
+  abstract save<T>(entity: T): Promise<T>
 
   /**
    * Update entity
@@ -33,17 +28,12 @@ export default abstract class AbstractRepository implements IRepository<any> {
    * @param {T extends DTO<any>} entity 
    * @returns {Promise<T>}
    */
-  async update<T extends IDTO<any>>(id: string, entity: T): Promise<T> {
-    throw new Error("Method not implemented.");
-  }
+  abstract update<T>(id: string, entity: T): Promise<T>
 
   /**
    * Delete entity
    * @param {string} id 
    * @returns {Promise<T>}
    */
-  async delete<T>(id: string): Promise<T> {
-    throw new Error("Method not implemented.");
-  }
-  
+  abstract delete<T>(id: string): Promise<T>
 }
