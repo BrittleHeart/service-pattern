@@ -1,7 +1,6 @@
-import { IUser } from "@/http/models/IUser";
-import { IRepository } from "@/repositories/IRepository";
 import { injectable } from "inversify";
 import { ObjectId } from "mongoose";
+import { IRepository } from "@/repositories/IRepository";
 
 @injectable()
 export default abstract class AbstractRepository implements IRepository<any> {
@@ -16,7 +15,7 @@ export default abstract class AbstractRepository implements IRepository<any> {
    * @param {ObjectId} id
    * @returns {Promise<IUser & {_id: ObjectId}>}
    */
-  abstract getById<T>(id: string): Promise<T & { _id: ObjectId }>;
+  abstract getById<T>(id: string): Promise<T | null>;
 
   /**
    * Save entity

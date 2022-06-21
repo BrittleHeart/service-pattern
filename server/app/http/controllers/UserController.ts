@@ -15,9 +15,10 @@ export default class UserController extends BaseController {
   }
 
   @httpGet('/')
-  public async index(): Promise<IUser[] | string> {
-    // if(!this._userService.getAll())
+  public async index(@response() response: Response): Promise<Response<IUser[]>> {
+    const users = await this._userService.getAll()
+    if(!users) return response.status(404).json({ message: 'Users not found' })
 
-    return await this._userService.getAll()
+    return response.status(200).json(users)
   }
 }
