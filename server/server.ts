@@ -7,6 +7,7 @@ import UserRepository from '@/repositories/UserRepository';
 import UserService from '@/services/UserService';
 
 import '@/http/controllers/UserController'
+import bodyParser from 'body-parser';
 
 const container = new Container();
 
@@ -18,6 +19,9 @@ const kernel = container.resolve<Kernel>(Kernel)
 async function bootstrap() {
   const server = new InversifyExpressServer(container)
   const app = server.build()
+  // app use json response and body parse
+  app.use(bodyParser.urlencoded({ extended: false }))
+  app.use(bodyParser.json())
 
   app.listen(3000, () => console.log('listening on port http://localhost:3000'))
   
